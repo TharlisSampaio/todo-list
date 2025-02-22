@@ -6,9 +6,9 @@ class Todos(models.Model):
     # blank=False: no banco não aceita campo em branco
     title = models.CharField(max_length=100, null=False, blank=False)
     # auto_now_add=True: insere a data que foi criado a tarefa
-    created_at = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    created_at = models.DateField(auto_now_add=True, null=False, blank=False)
     deadline = models.DateField(null=False, blank=False)
-    finished_at = models.DateTimeField(null=True)
+    finished_at = models.DateField(null=True)
 
 
 """

@@ -1,5 +1,4 @@
-from django.shortcuts import render
-
+from django.views.generic import ListView
 from todos.models import Todos
 
 
@@ -11,6 +10,5 @@ a renderização de modelos e a criação de respostas para o cliente.
 """
 
 
-def todo_list(request):
-    todos = Todos.objects.all()
-    return render(request, "todo_list.html", {"todos": todos})
+class TodosListView(ListView):
+    model = Todos
