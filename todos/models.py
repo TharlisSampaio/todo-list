@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Todo(models.Model):
+class Todos(models.Model):
     # max_length: maximo de caracteres; null=False: no banco de dados não aceitra campo null
     # blank=False: no banco não aceita campo em branco
     title = models.CharField(max_length=100, null=False, blank=False)
