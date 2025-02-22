@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from todos.models import Todos
+
 
 """
 O módulo views no Django é responsável por receber solicitações dos clientes,
@@ -9,5 +11,6 @@ a renderização de modelos e a criação de respostas para o cliente.
 """
 
 
-def home(request):
-    return render(request, "home.html")
+def todo_list(request):
+    todos = Todos.objects.all()
+    return render(request, "todo_list.html", {"todos": todos})
