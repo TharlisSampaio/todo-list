@@ -1,6 +1,8 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 from todos.models import Todos
+from django.shortcuts import redirect
+from datetime import datetime
 
 
 """
@@ -19,3 +21,22 @@ class TodoCreateView(CreateView):
     model = Todos
     fields = ["title", "deadline"]
     success_url = reverse_lazy("todo_list")
+
+
+class TodoUpdateView(UpdateView):
+    model = Todos
+    fields = ["title", "deadline"]
+    success_url = reverse_lazy("todo_list")
+
+
+class TodoDeleteView(DeleteView):
+    model = Todos
+    success_url = reverse_lazy("todo_list")
+
+
+class TodoCompleteView(View):
+    def get(self, request, pk):
+        todo = Todos.objects.get(pk=pk)
+        todo.finished_at = datetime.now()
+        todo.save()
+        return redirect("todo_list")

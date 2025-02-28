@@ -7,7 +7,7 @@ Lista de Tarefas
   {% block content %}
   <h2>Lista de Tarefas</h2>
   {% if todos_list %}
-    <table class="table table-striped">
+    <table class="table table-hover table-striped">
       <thead>
           <tr>
               <th>id</th>
@@ -19,17 +19,23 @@ Lista de Tarefas
       </thead>
       <tbody>
         {% for todo in todos_list %}
-          <tr>
-            <th>{{ todo.pk }}</th>
-            <th>{{ todo.title }}</th>
-            <th>{{ todo.created_at }}</th>
-            <th>{{ todo.deadline }}</th>
-            <th>{{ todo.finished_at|default:"---" }}</th>
-            <th>
-              <a href="#" class="btn btn-primary mb-2 mt-2 btn-sm">Concluir</a>
-              <a href="#" class="btn btn-danger btn-sm">Excluir</a>
-            </th>
-          </tr>
+            <tr>
+              <th>{{ todo.pk }}</th>
+              <th>{{ todo.title }}</th>
+              <th>{{ todo.created_at }}</th>
+              <th>{{ todo.deadline }}</th>
+              <th>{{ todo.finished_at|default:"---" }}</th>
+              <th>
+                {% if todo.finished_at %}
+                  <button type="button" href="{% url 'todo_complete' pk=todo.pk %}" class="btn btn-outline-primary mb-2 mt-2 btn-sm" disabled>Concluir</button>
+                  <button type="button" href="{% url 'todo_update' pk=todo.pk %}" class="btn btn-sm mb-2 mt-2 btn-outline-secondary" disabled>Editar</button>
+                {% else %}
+                  <button type="button" href="{% url 'todo_complete' pk=todo.pk %}" class="btn btn-outline-primary mb-2 mt-2 btn-sm">Concluir</button>
+                  <button type="button" href="{% url 'todo_update' pk=todo.pk %}" class="btn btn-sm mb-2 mt-2 btn-outline-secondary">Editar</button>
+                {% endif %}
+                <button type="button" href="{% url 'todo_delete' pk=todo.pk %}" class="btn btn-outline-danger btn-sm">Excluir</button>
+              </th>
+            </tr>
         {% endfor %}
       </tbody>
     </table>
