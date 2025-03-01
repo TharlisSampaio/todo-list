@@ -11,7 +11,7 @@
 ###
 
 <p align="left">Projeto realizado afim de treinar o desenvolvimento web. O projeto é uma aplicação web simples fazendo uso de padrão de projeto MTV (Model, Template, View).</p>
-<p aling="left">O projeto ToDo-List é uma lista de tarefas, que possuii as seguinte funcionalidades: criar, editar, excluir e concluir as tarefas.</p>
+<p aling="left">O projeto ToDo-List é uma lista de tarefas, que possui as seguinte funcionalidades: criar, editar, excluir e concluir as tarefas.</p>
 
 ###
 
