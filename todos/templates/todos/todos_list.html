@@ -27,13 +27,14 @@ Lista de Tarefas
               <th>{{ todo.finished_at|default:"---" }}</th>
               <th>
                 {% if todo.finished_at %}
-                  <button type="button" href="{% url 'todo_complete' pk=todo.pk %}" class="btn btn-outline-primary mb-2 mt-2 btn-sm" disabled>Concluir</button>
-                  <button type="button" href="{% url 'todo_update' pk=todo.pk %}" class="btn btn-sm mb-2 mt-2 btn-outline-secondary" disabled>Editar</button>
+                  <button type="button" onclick="location.href='{% url 'todo_complete' pk=todo.pk %}'" class="btn btn-outline-primary mb-2 mt-2 btn-sm" disabled>Concluir</button>
+                  <button type="button" onclick="location.href='{% url 'todo_update' pk=todo.pk %}'" class="btn btn-sm mb-2 mt-2 btn-outline-secondary" disabled>Editar</button>
+
                 {% else %}
-                  <button type="button" href="{% url 'todo_complete' pk=todo.pk %}" class="btn btn-outline-primary mb-2 mt-2 btn-sm">Concluir</button>
-                  <button type="button" href="{% url 'todo_update' pk=todo.pk %}" class="btn btn-sm mb-2 mt-2 btn-outline-secondary">Editar</button>
+                  <button type="button" onclick="location.href='{% url 'todo_complete' pk=todo.pk %}'" class="btn btn-outline-primary mb-2 mt-2 btn-sm">Concluir</button>
+                  <button type="button" onclick="location.href='{% url 'todo_update' pk=todo.pk %}'" class="btn btn-sm mb-2 mt-2 btn-outline-secondary">Editar</button>
                 {% endif %}
-                <button type="button" href="{% url 'todo_delete' pk=todo.pk %}" class="btn btn-outline-danger btn-sm">Excluir</button>
+                <button type="button" onclick="location.href='{% url 'todo_delete' pk=todo.pk %}'" class="btn btn-outline-danger btn-sm">Excluir</button>
               </th>
             </tr>
         {% endfor %}
