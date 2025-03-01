@@ -4,11 +4,11 @@ from django.db import models
 class Todos(models.Model):
     # max_length: maximo de caracteres; null=False: no banco de dados não aceitra campo null
     # blank=False: no banco não aceita campo em branco
-    title = models.CharField(max_length=100, null=False, blank=False)
+    title = models.CharField(verbose_name='título', max_length=100, null=False, blank=False)
     # auto_now_add=True: insere a data que foi criado a tarefa
-    created_at = models.DateField(auto_now_add=True, null=False, blank=False)
-    deadline = models.DateField(null=False, blank=False)
-    finished_at = models.DateField(null=True)
+    created_at = models.DateField(verbose_name='data de criação', auto_now_add=True, null=False, blank=False)
+    deadline = models.DateField(verbose_name='data limite', null=False, blank=False)
+    finished_at = models.DateField(verbose_name='data de finalização', null=True)
 
 
 """
